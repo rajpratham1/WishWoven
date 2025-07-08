@@ -1,0 +1,452 @@
+@import url('https://fonts.googleapis.com/css2?family=Creepster&family=Press+Start+2P&family=Roboto:wght@400;700&family=Pacifico&family=Orbitron&display=swap');
+
+:root {
+    --primary-color: #ff6b6b; /* Vibrant Red */
+    --secondary-color: #4ecdc4; /* Teal */
+    --accent-color: #fce77d; /* Yellow */
+    --dark-text: #2c3e50;
+    --light-text: #ecf0f1;
+    --bg-gradient-start: #f7cac9;
+    --bg-gradient-end: #83d475;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    color: var(--dark-text);
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* --- Celebration Overlay --- */
+.celebration-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 1;
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.celebration-overlay.hidden {
+    opacity: 0;
+    transform: translateY(-100%);
+    pointer-events: none; /* Prevent interaction when hidden */
+}
+
+.celebration-content {
+    text-align: center;
+    transform: scale(0.8);
+    opacity: 0;
+    animation: zoomIn 1.5s forwards ease-out 0.5s; /* Delay animation */
+}
+
+.celebration-text {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 3.5em;
+    color: #fff;
+    text-shadow: 
+        0 0 10px #ff0, 
+        0 0 20px #ff0, 
+        0 0 30px #f00, 
+        0 0 40px #f00, 
+        0 0 50px #00f, 
+        0 0 60px #00f, 
+        0 0 70px #0ff;
+    margin-bottom: 20px;
+    animation: neonGlow 1.5s infinite alternate;
+}
+
+.glitch-text {
+    animation: glitch 2s infinite alternate;
+}
+
+.celebration-message {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.8em;
+    color: var(--light-text);
+    margin-bottom: 40px;
+}
+
+.reveal-button {
+    padding: 15px 30px;
+    font-size: 1.5em;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+.reveal-button:hover {
+    background-color: #ff4d4d;
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+/* --- Main Content Container --- */
+#mainContent {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 900px;
+    margin: 40px 20px;
+    box-sizing: border-box;
+}
+
+/* Optional: Site Logo Styling */
+.site-logo {
+    display: block;
+    margin: 0 auto 30px auto;
+    max-width: 150px; /* Adjust as needed */
+    height: auto;
+}
+
+.main-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.8em;
+    color: var(--dark-text);
+    text-align: center;
+    margin-bottom: 35px;
+    text-shadow: 
+        1px 1px 0px #ccc, 
+        2px 2px 0px #bbb, 
+        3px 3px 0px #aaa, 
+        4px 4px 0px #999;
+}
+
+.section-title {
+    font-family: 'Pacifico', cursive;
+    font-size: 2em;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.input-section label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: var(--dark-text);
+    font-size: 1.1em;
+}
+
+.input-section input[type="text"],
+.input-section textarea,
+.input-section select {
+    width: calc(100% - 22px); /* Account for padding and border */
+    padding: 12px;
+    margin-bottom: 25px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1.1em;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-section input[type="text"]:focus,
+.input-section textarea:focus,
+.input-section select:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 8px rgba(78, 205, 196, 0.4);
+    outline: none;
+}
+
+.input-section textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.sticker-selection {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: #f8f8f8;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px dashed #ddd;
+}
+
+.sticker-option {
+    width: 70px;
+    height: 70px;
+    cursor: pointer;
+    border: 3px solid transparent;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+    object-fit: contain;
+    padding: 5px; /* Added padding to make border more visible */
+}
+
+.sticker-option:hover {
+    border-color: var(--primary-color);
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.sticker-info {
+    text-align: center;
+    font-size: 0.95em;
+    color: #777;
+    margin-bottom: 25px;
+}
+
+.selected-stickers-preview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    min-height: 50px; /* Placeholder height */
+    border: 1px dashed var(--secondary-color);
+    border-radius: 8px;
+    padding: 10px;
+    margin-top: 15px;
+    justify-content: center;
+    align-items: center;
+    background-color: #e6f7f7;
+}
+
+.selected-sticker-item {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 15px 25px;
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.3em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    margin-top: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+button:hover {
+    background-color: #38c1b7;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+button#generateGreeting {
+    background-color: var(--primary-color);
+}
+button#generateGreeting:hover {
+    background-color: #ff4d4d;
+}
+
+#submitGreeting { /* Styling for the new "Get Share Link" button */
+    background-color: #8e44ad; /* A nice purple */
+}
+#submitGreeting:hover {
+    background-color: #9b59b6;
+}
+
+.preview-section {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.greeting-card {
+    background-color: #e2f0f0;
+    border-radius: 15px;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    background: linear-gradient(145deg, #e0eafc, #cfdef3); /* Light blue gradient */
+}
+
+/* Dynamic Sharp Edge Frame */
+.dynamic-frame {
+    position: relative;
+    padding: 20px; /* Space for the border effect */
+    box-sizing: border-box;
+}
+
+.dynamic-frame::before,
+.dynamic-frame::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border: 5px solid var(--primary-color);
+    pointer-events: none;
+    box-sizing: border-box;
+}
+
+.dynamic-frame::before {
+    transform: skewX(-5deg); /* Shear effect for sharp edges */
+    border-color: var(--secondary-color);
+    z-index: 1;
+    border-radius: 15px;
+}
+
+.dynamic-frame::after {
+    transform: skewY(-5deg); /* Complementary shear */
+    border-color: var(--accent-color);
+    z-index: 2;
+    border-radius: 15px;
+}
+
+/* Ensure content stays above frame effects */
+.dynamic-frame > *:not(.card-sticker) {
+    position: relative;
+    z-index: 3;
+}
+
+
+.card-content {
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 5; /* Ensure content is above stickers initially */
+    position: relative; /* For z-index to work */
+}
+
+.card-content h3 {
+    margin-top: 0;
+    color: var(--dark-text);
+    font-size: 2.8em;
+    font-weight: 700;
+    line-height: 1.2;
+    animation: slideInUp 1s ease-out;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}
+
+.card-content p {
+    font-size: 1.3em;
+    line-height: 1.5;
+    color: #555;
+    margin-top: 15px;
+    animation: fadeIn 1.5s ease-out;
+}
+
+/* Dynamic Font Styles for Card Content */
+.font-Roboto h3, .font-Roboto p { font-family: 'Roboto', sans-serif; }
+.font-Pacifico h3, .font-Pacifico p { font-family: 'Pacifico', cursive; }
+.font-Orbitron h3, .font-Orbitron p { font-family: 'Orbitron', sans-serif; }
+.font-PressStart2P h3, .font-PressStart2P p { font-family: 'Press Start 2P', cursive; font-size: 1.5em; /* Adjust for pixel font */ }
+.font-Creepster h3, .font-Creepster p { font-family: 'Creepster', cursive; color: #8B0000; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); }
+
+
+.card-sticker {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+    cursor: grab; /* Indicates it can be moved (if using JS library) */
+    z-index: 4; /* Stickers above frame, below text by default */
+}
+
+.default-text {
+    color: #aaa;
+    font-style: italic;
+    font-size: 1.2em;
+}
+
+#shareLinkButton {
+    background-color: #3498db;
+    margin-top: 25px;
+}
+#shareLinkButton:hover {
+    background-color: #2980b9;
+}
+
+
+footer {
+    margin-top: 40px;
+    padding: 15px;
+    text-align: center;
+    font-size: 0.8em; /* Smaller font size */
+    color: #888;
+    border-top: 1px solid #eee;
+    width: 100%;
+    max-width: 900px;
+    box-sizing: border-box;
+}
+
+footer a {
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+.small-text {
+    font-size: 0.9em; /* Even smaller for individual lines if needed */
+    margin: 5px 0; /* Adjust spacing */
+}
+
+/* --- Animations --- */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInUp {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes zoomIn {
+    from { opacity: 0; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes neonGlow {
+    from { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #f0f, 0 0 40px #f0f, 0 0 50px #0ff, 0 0 60px #0ff, 0 0 70px #0ff; }
+    to { text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #f0f, 0 0 20px #f0f, 0 0 25px #0ff, 0 0 30px #0ff, 0 0 35px #0ff; }
+}
+
+@keyframes glitch {
+    0% { transform: translate(0); text-shadow: none; }
+    20% { transform: translate(-2px, 2px); text-shadow: 2px -2px 0 red, -2px 2px 0 blue; }
+    40% { transform: translate(-2px, -2px); text-shadow: -2px -2px 0 cyan, 2px 2px 0 magenta; }
+    60% { transform: translate(2px, 2px); text-shadow: -2px 2px 0 yellow, 2px -2px 0 green; }
+    80% { transform: translate(2px, -2px); text-shadow: 2px 2px 0 orange, -2px -2px 0 purple; }
+    100% { transform: translate(0); text-shadow: none; }
+}
+
+/* Utility Classes */
+.hidden {
+    display: none;
+}

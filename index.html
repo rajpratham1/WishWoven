@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WishWoven - Your Personalized Greetings</title>
+    <link rel="icon" href="logo.png" type="image/png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Press+Start+2P&family=Roboto:wght@400;700&family=Pacifico&family=Orbitron&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <audio id="backgroundMusic" loop autoplay>
+        <source src="tone.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div id="celebrationOverlay" class="celebration-overlay">
+        <div class="celebration-content">
+            <h1 class="celebration-text glitch-text">🎉 Woohoo! 🎉</h1>
+            <p class="celebration-message">Something special is waiting for you...</p>
+            <button id="revealGreeting" class="reveal-button">Reveal Your Greeting!</button>
+        </div>
+    </div>
+
+    <div id="mainContent" class="container">
+        <h1 class="main-title">Create Your Dynamic Greeting!</h1>
+
+        <div class="input-section">
+            <label for="recipientName">Recipient's Name:</label>
+            <input type="text" id="recipientName" placeholder="e.g., Birthday Superstar">
+
+            <label for="messageText">Your Special Message:</label>
+            <textarea id="messageText" placeholder="Write your heartfelt message here..."></textarea>
+
+            <label for="fontStyle">Choose Font Style:</label>
+            <select id="fontStyle">
+                <option value="Roboto">Modern (Roboto)</option>
+                <option value="Pacifico">Handwritten (Pacifico)</option>
+                <option value="Orbitron">Futuristic (Orbitron)</option>
+                <option value="Press Start2P">Retro Pixel (Press Start 2P)</option>
+                <option value="Creepster">Spooky (Creepster)</option>
+            </select>
+
+            <label>Select Animated Stickers & Decors:</label>
+            <div class="sticker-selection">
+                <img src="Fiesta Confetti Sticker by Brunograffer.gif" alt="Confetti" class="sticker-option" data-sticker-src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExaG1vNndzcGVpeGlhZWw4a2xsN3JjY3lhZG4ybDA5cTk3NXU5aWkyNCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/pVavmCDtgkwnuCn2rF/giphy.gif">
+                <img src="New York Yes Sticker by Nora Fikse.gif" alt="Sparkle" class="sticker-option" data-sticker-src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExNjdrNjl5azk2M3VqcWtucG9oOXN4MzQxNjc4b2d2MzUwdTRjejFiNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/3gRWfmZMI0Cb2Hoaye/giphy.gif">
+                <img src="Celebrating Happy Birthday Sticker by Sternenbruecke.gif" alt="Balloon" class="sticker-option" data-sticker-src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExbWQwMzlvcXJiemV5bnJnMjR2cjQxd3JiYTJ4bGN1ZGgyaGNmZzRwZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/mSqr512fcriPK9gQdo/giphy.gif">
+                <img src="your_birthday_sticker.png" alt="Happy Birthday" class="sticker-option" data-sticker-src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExbGRlaHd1azMxM2dpbGI0Nnlsd2J1ZTlua2lnczVoaGdnMGdscHQycyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/ttYBZ6Wn9CPY31emQi/giphy.gif">
+            </div>
+            <p class="sticker-info">Click a sticker/decor to add it to your greeting!</p>
+            <div id="selectedStickersPreview" class="selected-stickers-preview">
+                </div>
+
+            <button id="generateGreeting">Create & Preview Greeting</button>
+            <button id="submitGreeting">Get Share Link</button>
+        </div>
+
+        <div class="preview-section">
+            <h2 class="section-title">Your Dynamic Greeting Preview:</h2>
+            <div id="greetingCard" class="greeting-card dynamic-frame">
+                <div id="cardContent" class="card-content">
+                    <p class="default-text">Your personalized greeting will appear here!</p>
+                </div>
+            </div>
+            <button id="shareLinkButton" class="share-button hidden">Copy Share Link</button>
+        </div>
+    </div>
+
+    <footer id="developerInfo">
+        <p class="small-text">Developer - Pratham Kumar</p>
+        <p class="small-text">
+            LinkedIn: <a href="https://www.linkedin.com/in/pratham-kumar-2a4b151a7?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">Pratham Kumar</a>
+        </p>
+        <p class="small-text">
+            Instagram: <a href="https://www.instagram.com/pratham.shrivastaw?igsh=MXg0aW55bzdjMmhlYg==" target="_blank">@pratham.shrivastaw</a>
+        </p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
